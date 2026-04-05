@@ -30,3 +30,28 @@ The model uses 7 key parameters to make predictions:
 ├── crop_rf_model.pkl             # The trained Random Forest model
 ├── label_encoder.pkl             # Dictionary to decode crop names
 └── README.md                     # Project documentation
+
+💻 How to Use the Model
+You can use the saved model in your backend as follows:
+
+
+import pickle
+
+# Load model and encoder
+model = pickle.load(open('crop_rf_model.pkl', 'rb'))
+le = pickle.load(open('label_encoder.pkl', 'rb'))
+
+# Example input: [N, P, K, temp, hum, ph, rain]
+sample = [[90, 42, 43, 20.8, 82.0, 6.5, 202.9]]
+prediction = model.predict(sample)
+crop_name = le.inverse_transform(prediction)
+
+print(f"Recommended Crop: {crop_name[0]}")
+
+🏆 Conclusion
+This system demonstrates how AI can empower Smart Farming. With 99% accuracy, the model is highly reliable for real-world agricultural decision-making.
+
+Developed by [Sayed Khaled Al-sayed]
+Connect with me on [LinkedIn](www.linkedin.com/in/sayed-khaled-96316019a)
+[Kaggle Profile Link](https://www.kaggle.com/sayedkhaled2000)]
+[Gmail](sayedkhaled478@gmail)
